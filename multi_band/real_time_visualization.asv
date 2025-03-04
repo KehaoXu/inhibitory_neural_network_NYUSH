@@ -177,62 +177,27 @@ function real_time_visualization()
     
     %%
     % **创建滑块控件**
-    label_pos = [0.60, 0.87, 0.07, 0.05];
-    edit_pos = [0.67, 0.87, 0.05, 0.05];
-    create_slider(fig, 'duration', label_pos, edit_pos, 500, 5000, param_som.duration, @update_duration);
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 's2e_delay', label_pos, edit_pos, 1, 10, param_som.s2e_delay, @update_s2e_delay);
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 's2i_delay', label_pos, edit_pos, 1, 10, param_som.s2i_delay, @update_s2i_delay);
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'ne', label_pos, edit_pos, 100, 1000, param_som.ne, @update_ne);
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'ni', label_pos, edit_pos, 10, 500, param_som.ni, @update_ni);
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'ns', label_pos, edit_pos, 10, 500, param_som.ns, @update_ns);
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'nv', label_pos, edit_pos, 10, 500, param_som.nv, @update_nv);  % 新增参数 nv
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'M', label_pos, edit_pos, 0, 100, param_som.M, @update_M);
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'Mr', label_pos, edit_pos, 0, 100, param_som.Mr, @update_Mr);
-
-    label_pos = [0.82, 0.87, 0.05, 0.05];
-    edit_pos = [0.87, 0.87, 0.05, 0.05];
-    create_slider(fig, 's_es', label_pos, edit_pos, 0, 100, param_som.s_es, @update_s_es);  % 新增参数 s_es
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 's_is', label_pos, edit_pos, 0, 100, param_som.s_is, @update_s_is);  % 新增参数 s_is
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 's_sv', label_pos, edit_pos, 0, 100, param_som.s_sv, @update_s_sv);  % 新增参数 s_sv
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 's_vs', label_pos, edit_pos, 0, 100, param_som.s_vs, @update_s_vs);  % 新增参数 s_vs
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'tau_av', label_pos, edit_pos, 0, 100, param_som.tau_av, @update_tau_av);  % 新增参数 tau_av
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'tau_as', label_pos, edit_pos, 0, 100, param_som.tau_as, @update_tau_as);  % 新增参数 tau_as
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'b_v', label_pos, edit_pos, 0, 1, param_som.b_v, @update_b_v);  % 新增参数 b_v
-    label_pos = label_pos - [0, 0.1, 0, 0];
-    edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'b_s', label_pos, edit_pos, 0, 1, param_som.b_s, @update_b_s);  % 新增参数 b_s
+    create_slider(fig, 'duration', [0.60, 0.85, 0.07, 0.05], [0.67, 0.85, 0.05, 0.05], 500, 5000, param_som.duration, @update_duration);
+    create_slider(fig, 's2e_delay', [0.60, 0.75, 0.07, 0.05], [0.67, 0.75, 0.05, 0.05], 1, 10, param_som.s2e_delay, @update_s2e_delay);
+    create_slider(fig, 's2i_delay', [0.70, 0.65, 0.1, 0.05], [0.80, 0.65, 0.1, 0.05], 1, 10, param_som.s2i_delay, @update_s2i_delay);
+    create_slider(fig, 'ne', [0.70, 0.55, 0.1, 0.05], [0.80, 0.55, 0.1, 0.05], 100, 1000, param_som.ne, @update_ne);
+    create_slider(fig, 'ni', [0.70, 0.45, 0.1, 0.05], [0.80, 0.45, 0.1, 0.05], 10, 500, param_som.ni, @update_ni);
+    create_slider(fig, 'ns', [0.70, 0.35, 0.1, 0.05], [0.80, 0.35, 0.1, 0.05], 10, 500, param_som.ns, @update_ns);
+    create_slider(fig, 'nv', [0.70, 0.25, 0.1, 0.05], [0.80, 0.25, 0.1, 0.05], 10, 500, param_som.nv, @update_nv);  % 新增参数 nv
+    create_slider(fig, 'M', [0.70, 0.15, 0.1, 0.05], [0.80, 0.15, 0.1, 0.05], 0, 100, param_som.M, @update_M);
+    create_slider(fig, 'Mr', [0.70, 0.05, 0.1, 0.05], [0.80, 0.05, 0.1, 0.05], 0, 100, param_som.Mr, @update_Mr);
+    create_slider(fig, 's_es', [0.85, 0.85, 0.1, 0.05], [0.95, 0.85, 0.1, 0.05], 0, 1, param_som.s_es, @update_s_es);  % 新增参数 s_es
+    create_slider(fig, 's_is', [0.85, 0.75, 0.1, 0.05], [0.95, 0.75, 0.1, 0.05], 0, 1, param_som.s_is, @update_s_is);  % 新增参数 s_is
+    create_slider(fig, 's_sv', [0.85, 0.65, 0.1, 0.05], [0.95, 0.65, 0.1, 0.05], 0, 1, param_som.s_sv, @update_s_sv);  % 新增参数 s_sv
+    create_slider(fig, 's_vs', [0.85, 0.55, 0.1, 0.05], [0.95, 0.55, 0.1, 0.05], 0, 1, param_som.s_vs, @update_s_vs);  % 新增参数 s_vs
+    create_slider(fig, 'tau_av', [0.85, 0.45, 0.1, 0.05], [0.95, 0.45, 0.1, 0.05], 0, 100, param_som.tau_av, @update_tau_av);  % 新增参数 tau_av
+    create_slider(fig, 'tau_as', [0.85, 0.35, 0.1, 0.05], [0.95, 0.35, 0.1, 0.05], 0, 100, param_som.tau_as, @update_tau_as);  % 新增参数 tau_as
+    create_slider(fig, 'b_v', [0.85, 0.25, 0.1, 0.05], [0.95, 0.25, 0.1, 0.05], 0, 1, param_som.b_v, @update_b_v);  % 新增参数 b_v
+    create_slider(fig, 'b_s', [0.85, 0.15, 0.1, 0.05], [0.95, 0.15, 0.1, 0.05], 0, 1, param_som.b_s, @update_b_s);  % 新增参数 b_s
 
     % **运行仿真的按钮**
     uicontrol('Parent', fig, 'Style', 'pushbutton', 'String', '运行仿真', ...
-              'Units', 'normalized', 'Position', [0.85, 0.07, 0.1, 0.05], 'FontSize', 12, ...
+              'Units', 'normalized', 'Position', [0.85, 0.05, 0.1, 0.05], 'FontSize', 12, ...
               'Callback', @run_simulation);
 
     % **运行仿真**
@@ -340,7 +305,7 @@ function real_time_visualization()
 
     function update_slider_label(hObj)
         label = get(hObj, 'UserData');
-        set(label, 'String', sprintf('%s', get(label, 'UserData')));
+        set(label, 'String', sprintf('%s: %d', get(label, 'UserData'), round(get(hObj, 'Value'))));
     end
 end
 
@@ -362,7 +327,7 @@ function create_slider(parent, label, labelPos, editBoxPos, minVal, maxVal, init
 
     % **监听滑块值的变化，更新标签和输入框**
     addlistener(slider, 'ContinuousValueChange', @(hObj, event) ...
-        set(labelHandle, 'String', sprintf('%s', label)));
+        set(labelHandle, 'String', sprintf('%s: %d', label, round(get(hObj, 'Value')))));
     addlistener(slider, 'ContinuousValueChange', @(hObj, event) ...
         set(editBox, 'String', num2str(round(get(hObj, 'Value')))));
 

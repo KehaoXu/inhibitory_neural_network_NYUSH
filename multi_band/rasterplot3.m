@@ -76,14 +76,14 @@ legend([hE, hI, hS, hV], { ...
     sprintf('PVs (Blue): %.2f Hz', ave_I), ...
     sprintf('SOMs (Green): %.2f Hz', ave_S), ...
 	sprintf('VIPs (Megenta): %.2f Hz', ave_V)},...
-    'FontSize', 20, 'Location', 'southeast');
+    'FontSize', 15, 'Location', 'southeast');
 
 
 % Set title and labels
 title(sprintf('S_{es} = %.4f, S_{is} = %.4f, \\tau_{es}^{delay} = %d ms, \\tau_{is}^{delay} = %d ms', param.s_es / 100, param.s_is / 100, param.s2e_delay, param.s2i_delay), 'FontSize', 25);
 xlabel('time(ms)');
 ylabel('Neuron Index');
-set(gca,'fontsize',20);
-set(gcf, 'Units', 'normalized', 'OuterPosition', [0 0 1 1]);
+set(gca,'fontsize',15);
+% set(gcf, 'Units', 'normalized', 'OuterPosition', [0 0 1 1]);
 
 end
