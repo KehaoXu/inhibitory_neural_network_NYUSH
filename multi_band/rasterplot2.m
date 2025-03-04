@@ -51,44 +51,51 @@ for i=(ne+ni+1):(ne+ni+ns)
 end
 
 
-scatter(coor_E(:,2), coor_E(:,1),10,'.','r');
+hE = scatter(coor_E(:,2), coor_E(:,1),10,'.','r');
 hold on
-scatter(coor_I(:,2), coor_I(:,1),10,'.','b');
+hI = scatter(coor_I(:,2), coor_I(:,1),10,'.','b');
 hold on 
-scatter(coor_S(:,2), coor_S(:,1),10,'.','g');
+hS = scatter(coor_S(:,2), coor_S(:,1),10,'.','g');
+
+% 设置 legend，添加放电率信息
+legend([hE, hI, hS], { ...
+    sprintf('PCs (Red): %.2f Hz', ave_E), ...
+    sprintf('PVs (Blue): %.2f Hz', ave_I), ...
+    sprintf('SOMs (Green): %.2f Hz', ave_S)}, ...
+    'FontSize', 12, 'Location', 'southeast');
 
 % title('E-cells:red, PVs:bule, SOMs:green')
 title(sprintf('S_{es} = %.4f, S_{is} = %.4f, \\tau_{es}^{delay} = %d ms, \\tau_{is}^{delay} = %d ms', param.s_es / 100, param.s_is / 100, param.s2e_delay, param.s2i_delay), 'FontSize', 25);
 % title(sprintf('s2e\\_delay = %d ms, s2i\\_delay = %d ms', param.s2e_delay, param.s2i_delay), 'FontSize', 25);
 xlabel('time(ms)');
 ylabel('Neuron Index');
-set(gca,'fontsize',20);
-set(gcf, 'Units', 'normalized', 'OuterPosition', [0 0 1 1]);
+set(gca,'fontsize',15);
+% set(gcf, 'Units', 'normalized', 'OuterPosition', [0, 0.25, 0.5, 0.5]);
 
 
 % text(700, 100, sprintf('SOM Firing Rate: %.2f Hz', ave_S), 'FontSize', 25, 'Color', 'green');
 % text(700, 60, sprintf('PVs Firing Rate: %.2f Hz', ave_I), 'FontSize', 25, 'Color', 'blue');
 % text(700, 20, sprintf('PCs Firing Rate: %.2f Hz', ave_E), 'FontSize', 25, 'Color', 'red');
 
-% 获取当前轴的位置（在figure中的位置，以normalized单位）
-ax = gca; % Get current axes
-ax_pos = ax.Position;
+% % 获取当前轴的位置（在figure中的位置，以normalized单位）
+% ax = gca; % Get current axes
+% ax_pos = ax.Position;
+% 
+% % 计算文本框的相对位置（右下角）
+% x_pos = ax_pos(1) + ax_pos(3) - 0.25; % 右边缘距离 - 文本框宽度
+% y_pos1 = ax_pos(2) + 0.05; % 底边缘距离
+% y_pos2 = y_pos1 + 0.05;    % 第二个文本框
+% y_pos3 = y_pos2 + 0.05;    % 第三个文本框
 
-% 计算文本框的相对位置（右下角）
-x_pos = ax_pos(1) + ax_pos(3) - 0.25; % 右边缘距离 - 文本框宽度
-y_pos1 = ax_pos(2) + 0.05; % 底边缘距离
-y_pos2 = y_pos1 + 0.05;    % 第二个文本框
-y_pos3 = y_pos2 + 0.05;    % 第三个文本框
-
-% SOM Firing Rate
-annotation('textbox', [x_pos, y_pos3, 0.2, 0.05], 'String', sprintf('SOM: %.2f Hz', ave_S), ...
-    'FontSize', 25, 'Color', 'green', 'EdgeColor', 'none', 'HorizontalAlignment', 'right');
-
-% PVs Firing Rate
-annotation('textbox', [x_pos, y_pos2, 0.2, 0.05], 'String', sprintf('PVs: %.2f Hz', ave_I), ...
-    'FontSize', 25, 'Color', 'blue', 'EdgeColor', 'none', 'HorizontalAlignment', 'right');
-
-% PCs Firing Rate
-annotation('textbox', [x_pos, y_pos1, 0.2, 0.05], 'String', sprintf('PCs: %.2f Hz', ave_E), ...
-    'FontSize', 25, 'Color', 'red', 'EdgeColor', 'none', 'HorizontalAlignment', 'right');
-
+% % SOM Firing Rate
+% annotation('textbox', [x_pos, y_pos3, 0.2, 0.05], 'String', sprintf('SOM: %.2f Hz', ave_S), ...
+%     'FontSize', 15, 'Color', 'green', 'EdgeColor', 'none', 'HorizontalAlignment', 'right');
+% 
+% % PVs Firing Rate
+% annotation('textbox', [x_pos, y_pos2, 0.2, 0.05], 'String', sprintf('PVs: %.2f Hz', ave_I), ...
+%     'FontSize', 15, 'Color', 'blue', 'EdgeColor', 'none', 'HorizontalAlignment', 'right');
+% 
+% % PCs Firing Rate
+% annotation('textbox', [x_pos, y_pos1, 0.2, 0.05], 'String', sprintf('PCs: %.2f Hz', ave_E), ...
+%     'FontSize', 15, 'Color', 'red', 'EdgeColor', 'none', 'HorizontalAlignment', 'right');
+% 
