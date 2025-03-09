@@ -1,22 +1,22 @@
 function real_time_visualization()
-    % **创建一个窗口 (fig) - 用于显示神经网络仿真结果和参数调节**
-    fig = figure('Name', '神经网络仿真与参数调节', 'Position', [50, 50, 1200, 550]);
+    % **Create a window (fig) - for displaying neural network simulation results and parameter adjustment**
+    fig = figure('Name', 'Neural Network Simulation and Parameter Adjustment', 'Position', [50, 50, 1200, 550]);
 
-    % 创建子图区域1 - 用于显示神经网络仿真结果
+    % Create subplot area 1 - for displaying neural network simulation results
     ax1 = subplot('Position', [0.07, 0.12, 0.5, 0.8]);
-    title('神经网络光栅图');
+    title('Neural Network Raster Plot');
 
-    % 存储 subplot 句柄
+    % Store subplot handle
     handles.ax1 = ax1;
-    guidata(fig, handles);  % 存储 GUI 数据
+    guidata(fig, handles);  % Store GUI data
 
-    % 创建子图区域2 - 用于参数调节
+    % Create subplot area 2 - for parameter adjustment
     ax2 = subplot('Position', [0.6, 0.1, 0.4, 0.8]);
-    set(ax2, 'Visible', 'off');  % 隐藏子图区域的坐标轴
+    set(ax2, 'Visible', 'off');  % Hide the axes of the subplot area
 
 %%
-    % 初始化参数
-    data = load('param2.mat'); % 'param2.mat' 中包含变量 'param'
+    % Initialize parameters
+    data = load('param2.mat'); % 'param2.mat' contains the variable 'param'
     param_som = data.param;
     param_som.duration =  1000;  % ms
     
@@ -160,7 +160,7 @@ function real_time_visualization()
     param_som.tau_vi = 4.5;  % GABA time constant
     
     
-    %% frequency of exteranl input
+    %% frequency of external input
     freq = 7000;
     param_som.lambda_e = freq;    
     param_som.lambda_i = freq;
@@ -176,7 +176,7 @@ function real_time_visualization()
 
     
     %%
-    % **创建滑块控件**
+    % **Create slider controls**
     label_pos = [0.60, 0.87, 0.07, 0.05];
     edit_pos = [0.67, 0.87, 0.05, 0.05];
     create_slider(fig, 'duration', label_pos, edit_pos, 500, 5000, param_som.duration, @update_duration);
@@ -197,7 +197,7 @@ function real_time_visualization()
     create_slider(fig, 'ns', label_pos, edit_pos, 10, 500, param_som.ns, @update_ns);
     label_pos = label_pos - [0, 0.1, 0, 0];
     edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'nv', label_pos, edit_pos, 10, 500, param_som.nv, @update_nv);  % 新增参数 nv
+    create_slider(fig, 'nv', label_pos, edit_pos, 10, 500, param_som.nv, @update_nv);  % New parameter nv
     label_pos = label_pos - [0, 0.1, 0, 0];
     edit_pos = edit_pos - [0, 0.1, 0, 0];
     create_slider(fig, 'M', label_pos, edit_pos, 0, 100, param_som.M, @update_M);
@@ -207,35 +207,35 @@ function real_time_visualization()
 
     label_pos = [0.82, 0.87, 0.05, 0.05];
     edit_pos = [0.87, 0.87, 0.05, 0.05];
-    create_slider(fig, 's_es', label_pos, edit_pos, 0, 100, param_som.s_es, @update_s_es);  % 新增参数 s_es
+    create_slider(fig, 's_es', label_pos, edit_pos, 0, 100, param_som.s_es, @update_s_es);  % New parameter s_es
     label_pos = label_pos - [0, 0.1, 0, 0];
     edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 's_is', label_pos, edit_pos, 0, 100, param_som.s_is, @update_s_is);  % 新增参数 s_is
+    create_slider(fig, 's_is', label_pos, edit_pos, 0, 100, param_som.s_is, @update_s_is);  % New parameter s_is
     label_pos = label_pos - [0, 0.1, 0, 0];
     edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 's_sv', label_pos, edit_pos, 0, 100, param_som.s_sv, @update_s_sv);  % 新增参数 s_sv
+    create_slider(fig, 's_sv', label_pos, edit_pos, 0, 100, param_som.s_sv, @update_s_sv);  % New parameter s_sv
     label_pos = label_pos - [0, 0.1, 0, 0];
     edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 's_vs', label_pos, edit_pos, 0, 100, param_som.s_vs, @update_s_vs);  % 新增参数 s_vs
+    create_slider(fig, 's_vs', label_pos, edit_pos, 0, 100, param_som.s_vs, @update_s_vs);  % New parameter s_vs
     label_pos = label_pos - [0, 0.1, 0, 0];
     edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'tau_av', label_pos, edit_pos, 0, 100, param_som.tau_av, @update_tau_av);  % 新增参数 tau_av
+    create_slider(fig, 'tau_av', label_pos, edit_pos, 0, 100, param_som.tau_av, @update_tau_av);  % New parameter tau_av
     label_pos = label_pos - [0, 0.1, 0, 0];
     edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'tau_as', label_pos, edit_pos, 0, 100, param_som.tau_as, @update_tau_as);  % 新增参数 tau_as
+    create_slider(fig, 'tau_as', label_pos, edit_pos, 0, 100, param_som.tau_as, @update_tau_as);  % New parameter tau_as
     label_pos = label_pos - [0, 0.1, 0, 0];
     edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'b_v', label_pos, edit_pos, 0, 1, param_som.b_v, @update_b_v);  % 新增参数 b_v
+    create_slider(fig, 'b_v', label_pos, edit_pos, 0, 1, param_som.b_v, @update_b_v);  % New parameter b_v
     label_pos = label_pos - [0, 0.1, 0, 0];
     edit_pos = edit_pos - [0, 0.1, 0, 0];
-    create_slider(fig, 'b_s', label_pos, edit_pos, 0, 1, param_som.b_s, @update_b_s);  % 新增参数 b_s
+    create_slider(fig, 'b_s', label_pos, edit_pos, 0, 1, param_som.b_s, @update_b_s);  % New parameter b_s
 
-    % **运行仿真的按钮**
-    uicontrol('Parent', fig, 'Style', 'pushbutton', 'String', '运行仿真', ...
-              'Units', 'normalized', 'Position', [0.85, 0.07, 0.1, 0.05], 'FontSize', 12, ...
+    % **Run simulation button**
+    uicontrol('Parent', fig, 'Style', 'pushbutton', 'String', 'Run Simulation', ...
+              'Units', 'normalized', 'Position', [0.85, 0.07, 0.12, 0.05], 'FontSize', 12, ...
               'Callback', @run_simulation);
 
-    % **运行仿真**
+    % **Run simulation**
     function run_simulation(~, ~)
         handles = guidata(fig);
         cla(handles.ax1);
@@ -244,15 +244,15 @@ function real_time_visualization()
         res_lif = model_LIF_SOM_VIP(param_som,[]);
         toc;
 
-        % **切换到 fig 绘制图像**
+        % **Switch to fig to plot the image**
         figure(fig);
         
         subplot(handles.ax1);
         rasterplot3(res_lif, param_som);
-        title('神经网络光栅图');
+        title('Neural Network Raster Plot');
     end
 
-    % **参数更新函数**
+    % **Parameter update functions**
     function update_duration(hObj, ~)
         param_som.duration = round(get(hObj, 'Value'));
         update_slider_label(hObj);
@@ -344,29 +344,29 @@ function real_time_visualization()
     end
 end
 
-% **修改 `create_slider` 使滑块在文字右侧，并添加输入框**s
+% **Modify `create_slider` to place the slider to the right of the text and add an input box**
 function create_slider(parent, label, labelPos, editBoxPos, minVal, maxVal, initVal, callback)
-    % **标签（靠左）**
+    % **Label (left-aligned)**
     labelHandle = uicontrol('Parent', parent, 'Style', 'text', 'Units', 'normalized', 'Position', labelPos, ...
               'String', sprintf('%s', label), 'FontSize', 12, 'HorizontalAlignment', 'left', ...
               'UserData', label);
 
-    % **滑块（右侧）**
+    % **Slider (right side)**
     sliderPos = [editBoxPos(1) + editBoxPos(3) + 0.01, editBoxPos(2), 0.05, editBoxPos(4)];
     slider = uicontrol('Parent', parent, 'Style', 'slider', 'Units', 'normalized', 'Min', minVal, 'Max', maxVal, ...
               'Value', initVal, 'Position', sliderPos, 'Callback', callback, 'UserData', labelHandle);
 
-    % **输入框（中间）**
+    % **Input box (middle)**
     editBox = uicontrol('Parent', parent, 'Style', 'edit', 'Units', 'normalized', 'Position', editBoxPos, ...
               'String', num2str(initVal), 'FontSize', 10, 'Callback', @(hObj, event) edit_callback(hObj, slider));
 
-    % **监听滑块值的变化，更新标签和输入框**
+    % **Listen to slider value changes and update the label and input box**
     addlistener(slider, 'ContinuousValueChange', @(hObj, event) ...
         set(labelHandle, 'String', sprintf('%s', label)));
     addlistener(slider, 'ContinuousValueChange', @(hObj, event) ...
         set(editBox, 'String', num2str(round(get(hObj, 'Value')))));
 
-    % **输入框回调函数**
+    % **Input box callback function**
     function edit_callback(hObj, slider)
         val = str2double(get(hObj, 'String'));
         if isnan(val) || val < minVal || val > maxVal
